@@ -60,7 +60,7 @@ def find_single_conditional_score(county_comp_value,county_comp_var,corr,inclu_1
 
 def get_cohort_similarity_to_counties(cohort_avgs,compare_criteria,incl_criteria):
     this_dir, this_filename = os.path.split(__file__)
-    DATA_PATH = os.path.join(this_dir,'data',"County_Data_after_impute_after_scaling.csv")
+    DATA_PATH = os.path.join(this_dir,"data","County_Data_after_impute_after_scaling.csv")
     county_data=pd.read_csv(DATA_PATH)
 
     for incl_var in incl_criteria:
@@ -101,8 +101,9 @@ def get_cohort_similarity_to_counties(cohort_avgs,compare_criteria,incl_criteria
 
 def map_similarirty(similarity_df,state_list,label_counties,plot_file_name):
     this_dir, this_filename = os.path.split(__file__)
-    DATA_PATH2 = os.path.join(this_dir,'data','us-albers-counties.json')
-    usa=gp.read_file(DATA_PATH2)
+    mod_dir=this_dir.replace("//","/")
+    DATA_PATH = os.path.join(mod_dir,"data","us-albers-counties.json")
+    usa=gp.read_file(DATA_PATH)
     usa['STATE']=usa['state_fips'].astype('int64')
     usa['COUNTY']=usa['county_fips'].astype('int64')
     similarity_df["Normalized_Similarity"]=100*(similarity_df['Similarity']-min(similarity_df['Similarity']))/(max(similarity_df['Similarity'])-min(similarity_df['Similarity']))
