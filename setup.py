@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='cohort_compare',
-      version='0.1',
+      version='0.1.1',
       description='A library of functions for comparing clinical cohorts to the populations of US counties',
       classifiers=[
         'Development Status :: 3 - Alpha',
@@ -17,11 +17,11 @@ setup(name='cohort_compare',
       license='MIT',
       packages=['cohort_compare'],
       install_requires=[
-          'numpy>=1.15.4',
+          'numpy>=1.15.0',
           'scipy',
           'sklearn',
           'matplotlib',
-          'fiona>=1.8.6'
+          'fiona>=1.8.6',
           'geopandas>=0.4.1',
       ],
       include_package_data=True,
