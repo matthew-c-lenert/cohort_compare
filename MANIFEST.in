@@ -1,0 +1,4 @@
+include compare_cohort/County_Data_after_impute_after_scaling.csv
+include compare_cohort/us-albers-counties.json
+include LICENSE.rmd
+include README.md
