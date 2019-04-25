@@ -73,7 +73,7 @@ Stroke: Death due to cerebrovascular diseases, ICD-9 codes: 430-438. ICD-10 code
 
 
 ### Comparison Criteria
-Poverty: The percentage of individuals living below the poverty level in 2008 is data obtained from the “Small Area Income Poverty Estimates (SAIPE),” U.S. Bureau of the Census and can be obtained at http://www.census.gov/did/www/saipe/data/statecounty/data/index.html.
+Poverty: The percentage of individuals living below the poverty level obtained from the “Small Area Income Poverty Estimates (SAIPE),” U.S. Bureau of the Census and can be obtained at http://www.census.gov/did/www/saipe/data/statecounty/data/index.html.
 
 Age_19_Under: Age-specific population sizes are from “Annual estimates of the resident population by age, sex, race, and Hispanic origin for counties.”
 
