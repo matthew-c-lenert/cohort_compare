@@ -99,7 +99,7 @@ def get_cohort_similarity_to_counties(cohort_avgs,compare_criteria,incl_criteria
 
     return(score_county(cohort_avgs,conditioned_criteria))
 
-def map_similarirty(similarity_df,state_list,label_counties,plot_file_name):
+def map_similarirty(similarity_df,state_list,label_counties,plot_file_name,color_scheme):
     this_dir, this_filename = os.path.split(__file__)
     mod_dir=this_dir.replace("//","/")
     DATA_PATH = os.path.join(mod_dir,"data","us-albers-counties.json")
@@ -133,7 +133,7 @@ def map_similarirty(similarity_df,state_list,label_counties,plot_file_name):
     fig, ax = plt.subplots(1, figsize=(fig_size, fig_size-10))
     ax.set_axis_off()
     plt.axis('equal')
-    sim_usa.plot( column='Normalized_Similarity' ,cmap='YlGn', ax=ax,  edgecolor='grey')
+    sim_usa.plot( column='Normalized_Similarity' ,cmap=color_scheme, ax=ax,  edgecolor='grey')
 
     props = dict(boxstyle='round', facecolor='linen', alpha=0.25)
     if label_counties:
@@ -170,7 +170,7 @@ def map_cohort_avgs(cohort_averages,comparison_mappings):
             cohort_avgs[comparison_mappings[key]]=cohort_averages[key]
     return(cohort_avgs)
 
-def compare_cohort_to_counties(comparison_mappings,cohort_df=pd.DataFrame({'A' : []}),cohort_averages={},incl_criteria=[],state_list=[],label_counties=False,plot_file_name="",return_similarity_scores=False,print_progress=False):
+def compare_cohort_to_counties(comparison_mappings,cohort_df=pd.DataFrame({'A' : []}),cohort_averages={},incl_criteria=[],state_list=[],label_counties=False,plot_file_name="",return_similarity_scores=False,print_progress=False,color_scheme='YlGn'):
     cohort_avgs={}
     if len(cohort_averages)==0:
         if cohort_df.empty:
@@ -189,7 +189,7 @@ def compare_cohort_to_counties(comparison_mappings,cohort_df=pd.DataFrame({'A' :
     similarity_df=get_cohort_similarity_to_counties(cohort_avgs,list(comparison_mappings.values()),incl_criteria)
     if print_progress:
         print("Creating similarity map\n")
-    map_similarirty(similarity_df,state_list,label_counties,plot_file_name)
+    map_similarirty(similarity_df,state_list,label_counties,plot_file_name,color_scheme)
     if return_similarity_scores:
         return(similarity_df)
 
