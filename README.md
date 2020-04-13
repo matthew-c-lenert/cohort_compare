@@ -14,7 +14,7 @@ Comparing your cohort to US Counties requires the researcher to define 2 essenti
 
 ## Package Functions and Parameters
 
-### compare_cohort_to_counties(comparison_mappings, cohort_df=pd.DataFrame({'A' : []}), cohort_averages={}, incl_criteria=[], state_list=[], label_counties=False, plot_file_name="", return_similarity_scores=False, print_progress=False)
+### compare_cohort_to_counties(comparison_mappings, cohort_df=pd.DataFrame({'A' : []}), cohort_averages={}, incl_criteria=[], state_list=[], label_counties=False, plot_file_name="", return_similarity_scores=False, print_progress=False, color_scheme='YlGn')
 
 This is the main function of the library and is meant to take you from a cohort to a similarity map. This function can use your cohort dataframe to calculate the similarity of each US county to your cohort based on the comparison criteria and the inclusion criteria. Then it will map the normalized similarity scores to a chloropleth map of all US counties. The parameters for this function are defined below:
 
@@ -36,6 +36,7 @@ return_similarity_scores: a Boolean flag for outputting the pandas dataframe of 
 
 print_progress: a Boolean flag for printing to console the different steps the function takes in producing a similarity map. The default, False, will result in no messages being printed to the console. This parameter is optional.
 
+color_scheme: the matplotlib color map used to shade county similarity. See https://matplotlib.org/tutorials/colors/colormaps.html for options. The default is 'YlGn'.
 
 ### get_cohort_similarity_to_counties(cohort_avgs, compare_criteria, incl_criteria)
 
@@ -44,7 +45,7 @@ A helper function to calculate the similarity score of US counties to the resear
 cohort_avgs: a mapped dictionary of values representing the centroid of the cohort labeled with the appropriate county variable name. For example, {“Smoker”:0.34, “Obesity”: 0.55}.
 
 
-### map_similarirty(similarity_df, state_list, label_counties, plot_file_name)
+### map_similarirty(similarity_df, state_list, label_counties, plot_file_name, color_scheme)
 
 A helper function that turns a data frame of similarity scores into a chloropleth map.
 
@@ -73,7 +74,7 @@ Stroke: Death due to cerebrovascular diseases, ICD-9 codes: 430-438. ICD-10 code
 
 
 ### Comparison Criteria
-Poverty: The percentage of individuals living below the poverty level obtained from the “Small Area Income Poverty Estimates (SAIPE),” U.S. Bureau of the Census and can be obtained at http://www.census.gov/did/www/saipe/data/statecounty/data/index.html.
+Poverty: The percentage of individuals living below the poverty level in 2008 is data obtained from the “Small Area Income Poverty Estimates (SAIPE),” U.S. Bureau of the Census and can be obtained at http://www.census.gov/did/www/saipe/data/statecounty/data/index.html.
 
 Age_19_Under: Age-specific population sizes are from “Annual estimates of the resident population by age, sex, race, and Hispanic origin for counties.”
 
